@@ -80,18 +80,23 @@ a{
     font-size: 3ch;
     text-decoration: underline;
     cursor: pointer;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
 .genre-count{
     color: red;
     font-size: 3ch;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
 .movie-title{
     color: black;
-    text-align-last: center;
+    -moz-text-align-last: center;
+         text-align-last: center;
     font-weight: bold;
 }
 
@@ -122,6 +127,8 @@ a{
 }
 
 .form-check{
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -132,6 +139,8 @@ a{
 }
 
 .width-fit{
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content
 }
 
@@ -150,3 +159,4 @@ a{
         display: none;
     }
 }
+

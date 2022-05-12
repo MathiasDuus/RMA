@@ -13,7 +13,7 @@ class School extends Model
 
     public function location()
     {
-        return $this->belongsTo(Location::class,"id", "schoolID");
+        return $this->belongsTo(Location::class,"schoolID", "id");
     }
     use HasFactory;
 }

@@ -16,7 +16,7 @@ class Measurements extends Model
 
     public function location()
     {
-        return $this->belongsTo(Location::class,"id", "locationID");
+        return $this->belongsTo(Location::class,"locationID", "id");
     }
     use HasFactory;
 }
