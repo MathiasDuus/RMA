@@ -28,7 +28,7 @@ class MeasurementResource extends JsonResource
                     'school' => $this->location->school->schoolName,
                     'school_id' => (string)$this->location->school->id,
                 ],
-                'created_at' =>  $this->created_at,
+                'created_at' =>  date_format($this->created_at, "H:i:s d-m-Y"),
             ]
         ];
     }

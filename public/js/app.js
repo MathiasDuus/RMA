@@ -2232,27 +2232,8 @@ $(document).ready(function () {
   }); // Runs every ten seconds.
 
   var intervalId = window.setInterval(function () {
-    // let table = $('#example').DataTable();
-    // table.destroy();
-    // $.ajax({
-    //     url: '/api/measurement',
-    //     success: function (data) {
-    //         console.log(data)
-    //
-    //         $('#example').DataTable( {
-    //             data: data,
-    //             columns: [
-    //                 { "data": "attributes.temperature" },
-    //                 { "data": "attributes.humidity" },
-    //                 { "data": "attributes.light" },
-    //                 { "data": "attributes.location.school" },
-    //                 { "data": "attributes.location.room" },
-    //                 { "data": "attributes.created_at" }
-    //             ]
-    //         } );
-    //     }
-    // });
-    table.ajax.reload();
+    // Reloads the table, without moving user
+    table.ajax.reload(null, false);
   }, 10000);
 }); //
 // function get_measurements()  {
