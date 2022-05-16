@@ -15,7 +15,7 @@ class MeasurementsController extends Controller
      */
     public function index()
     {
-        return MeasurementResource::collection(Measurements::all());
+        return MeasurementResource::collection(Measurements::all()->sortByDesc('created_at'));
     }
 
     /**
