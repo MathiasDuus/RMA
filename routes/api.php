@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource("/school", \App\Http\Controllers\SchoolController::class);
 Route::apiResource("/location", \App\Http\Controllers\LocationController::class);
 Route::apiResource("/measurement", \App\Http\Controllers\MeasurementsController::class);
+Route::apiResource("/threshold", \App\Http\Controllers\ThresholdsController::class);
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();

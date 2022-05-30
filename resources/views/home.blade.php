@@ -1,7 +1,5 @@
 @include('inc.header')
 
-{{-- TODO make homepage, som viser den nyeste værdi--}}
-
 <div class="container">
     <div class="row">
         <h1 id="location"></h1>

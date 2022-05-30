@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ThresholdResource;
 use App\Models\Thresholds;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ThresholdsController extends Controller
      */
     public function index()
     {
-        //
+        return ThresholdResource::collection(Thresholds::all());
     }
 
     /**
@@ -35,7 +36,13 @@ class ThresholdsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $threshold = Thresholds::create([
+            'temperature' => $request->input('temperature'),
+            'humidity' => $request->input('humidity'),
+            'light' => $request->input('light'),
+            'locationID' => $request->input('locationID'),
+        ]);
+        return new ThresholdResource($threshold);
     }
 
     /**
@@ -46,7 +53,7 @@ class ThresholdsController extends Controller
      */
     public function show(Thresholds $thresholds)
     {
-        //
+        return new ThresholdResource($thresholds);
     }
 
     /**
@@ -69,7 +76,14 @@ class ThresholdsController extends Controller
      */
     public function update(Request $request, Thresholds $thresholds)
     {
-        //
+        $thresholds->update([
+            'temperature' => $request->input('temperature'),
+            'humidity' => $request->input('humidity'),
+            'light' => $request->input('light'),
+            'locationID' => $request->input('locationID'),
+        ]);
+
+        return new ThresholdResource($thresholds);
     }
 
     /**
@@ -80,6 +94,10 @@ class ThresholdsController extends Controller
      */
     public function destroy(Thresholds $thresholds)
     {
-        //
+        /*
+        $publisher->delete();
+        return response(null, 204);
+        */
+        return response('Deletion is not allowed', 405);
     }
 }

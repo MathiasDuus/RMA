@@ -10,6 +10,7 @@ $(document).ready(function() {
     else if (window.location.href.indexOf("history") > -1) {
         historyTable()
     }
+    // Run if on home tab
     else{
         home();
     }
@@ -26,9 +27,6 @@ function home(){
                 $('#humidity').html('Humidity:' + info.humidity)
                 $('#light').html('Light:' + info.light)
             });
-
-
-
     };
 
     ajax_call();
@@ -38,6 +36,35 @@ function home(){
 }
 
 function edit(){
+
+    $.get("/api/threshold",
+        function(data){
+            let info = data.data[0].attributes;
+            console.log(info)
+            $('#temperaturInput').val(info.temperature)
+            $('#humidityInput').val(info.humidity)
+            $('#lightInput').val(info.light)
+        });
+
+    $("#updateForm").submit(function (event) {
+        let formData = {
+            temperature: $("#temperaturInput").val(),
+            humidity: $("#humidityInput").val(),
+            light: $("#lightInput").val(),
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "api/threshold/1",
+            data: formData,
+            dataType: "json",
+            encode: true,
+        }).done(function (data) {
+            console.log(data);
+        });
+
+        event.preventDefault();
+    });
 
 }
 

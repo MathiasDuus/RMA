@@ -2213,7 +2213,8 @@ $(document).ready(function () {
   } // Run if on the history tab
   else if (window.location.href.indexOf("history") > -1) {
     historyTable();
-  } else {
+  } // Run if on home tab
+  else {
     home();
   }
 });
@@ -2234,7 +2235,32 @@ function home() {
   setInterval(ajax_call, interval);
 }
 
-function edit() {}
+function edit() {
+  $.get("/api/threshold", function (data) {
+    var info = data.data[0].attributes;
+    console.log(info);
+    $('#temperaturInput').val(info.temperature);
+    $('#humidityInput').val(info.humidity);
+    $('#lightInput').val(info.light);
+  });
+  $("#updateForm").submit(function (event) {
+    var formData = {
+      temperature: $("#temperaturInput").val(),
+      humidity: $("#humidityInput").val(),
+      light: $("#lightInput").val()
+    };
+    $.ajax({
+      type: "PUT",
+      url: "api/threshold/1",
+      data: formData,
+      dataType: "json",
+      encode: true
+    }).done(function (data) {
+      console.log(data);
+    });
+    event.preventDefault();
+  });
+}
 
 function historyTable() {
   // to get initial values
