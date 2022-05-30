@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/edit', function () {
-    return view('edit');
-});
+//Route::get('/edit', function () {
+//    return view('edit');
+//});
 Route::get('/history', function () {
     return view('history');
 });

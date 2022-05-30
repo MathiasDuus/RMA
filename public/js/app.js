@@ -2207,11 +2207,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var table;
 $(document).ready(function () {
-  // Run if on the edit tab
-  if (window.location.href.indexOf("edit") > -1) {
-    edit();
-  } // Run if on the history tab
-  else if (window.location.href.indexOf("history") > -1) {
+  // // Run if on the edit tab
+  // if (window.location.href.indexOf("edit") > -1) {
+  //     edit()
+  // }
+  // Run if on the history tab
+
+  /*else*/
+  if (window.location.href.indexOf("history") > -1) {
     historyTable();
   } // Run if on home tab
   else {
@@ -2233,34 +2236,40 @@ function home() {
   ajax_call();
   var interval = 1000 * 2;
   setInterval(ajax_call, interval);
-}
+} //
+// function edit(){
+//
+//     $.get("/api/threshold",
+//         function(data){
+//             let info = data.data[0].attributes;
+//             console.log(info)
+//             $('#temperaturInput').val(info.temperature)
+//             $('#humidityInput').val(info.humidity)
+//             $('#lightInput').val(info.light)
+//         });
+//
+//     $("#updateForm").submit(function (event) {
+//         let formData = {
+//             temperature: $("#temperaturInput").val(),
+//             humidity: $("#humidityInput").val(),
+//             light: $("#lightInput").val(),
+//         };
+//
+//         $.ajax({
+//             type: "PUT",
+//             url: "api/threshold/1",
+//             data: formData,
+//             dataType: "json",
+//             encode: true,
+//         }).done(function (data) {
+//             console.log(data);
+//         });
+//
+//         event.preventDefault();
+//     });
+//
+// }
 
-function edit() {
-  $.get("/api/threshold", function (data) {
-    var info = data.data[0].attributes;
-    console.log(info);
-    $('#temperaturInput').val(info.temperature);
-    $('#humidityInput').val(info.humidity);
-    $('#lightInput').val(info.light);
-  });
-  $("#updateForm").submit(function (event) {
-    var formData = {
-      temperature: $("#temperaturInput").val(),
-      humidity: $("#humidityInput").val(),
-      light: $("#lightInput").val()
-    };
-    $.ajax({
-      type: "PUT",
-      url: "api/threshold/1",
-      data: formData,
-      dataType: "json",
-      encode: true
-    }).done(function (data) {
-      console.log(data);
-    });
-    event.preventDefault();
-  });
-}
 
 function historyTable() {
   // to get initial values

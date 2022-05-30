@@ -14,6 +14,9 @@ class Thresholds extends Model
         'locationID'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function location()
     {
         return $this->belongsTo(Location::class,"locationID", "id");

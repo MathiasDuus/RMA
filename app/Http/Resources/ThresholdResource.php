@@ -15,7 +15,7 @@ class ThresholdResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => (string)$request->id,
+            'id' => (string)$this->id,
             'type' => 'Threshold',
             'attributes' => [
                 'temperature' => $this->temperature,
