@@ -21,7 +21,7 @@ class MeasurementResource extends JsonResource
             'attributes' => [
                 'temperature' => $this->temperature,
                 'humidity' =>  $this->humidity,
-                'light' =>  $this->humidity,
+                'light' =>  $this->light,
                 'location' => [
                     'id' => (string)$this->location->id,
                     'room' => $this->location->room,

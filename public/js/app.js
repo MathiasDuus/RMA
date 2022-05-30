@@ -2206,8 +2206,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (() => {
 
 var table;
-console.log("Hello");
 $(document).ready(function () {
+  // Run if on the edit tab
+  if (window.location.href.indexOf("edit") > -1) {
+    edit();
+  } // Run if on the history tab
+  else if (window.location.href.indexOf("history") > -1) {
+    historyTable();
+  } else {
+    home();
+  }
+});
+
+function home() {
+  var ajax_call = function ajax_call() {
+    $.get("/api/measurement", function (data) {
+      var info = data.data[0].attributes;
+      console.log(info);
+      $('#temperature').html('Temperatur:' + info.temperature);
+      $('#humidity').html('Humidity:' + info.humidity);
+      $('#light').html('Light:' + info.light);
+    });
+  };
+
+  ajax_call();
+  var interval = 1000 * 2;
+  setInterval(ajax_call, interval);
+}
+
+function edit() {}
+
+function historyTable() {
   // to get initial values
   table = $('#example').DataTable({
     ajax: {
@@ -2235,32 +2264,7 @@ $(document).ready(function () {
     // Reloads the table, without moving user
     table.ajax.reload(null, false);
   }, 10000);
-}); //
-// function get_measurements()  {
-//     // ajax GET request
-//     $.get("/api/measurement", function (data, status) {
-//         // Checks for success
-//         if (status === 'success') {
-//             // We only want the first element
-//             let firstData = data[0];
-//             // Formats a location string
-//             let location = "School: " + firstData.attributes.location.school + "<br>Rum: " + firstData.attributes.location.room
-//
-//             // Writes all info to DOM
-//             $("#location").html(location)
-//             $("#temperature").text("Temperature: " + firstData.attributes.temperature)
-//             $("#humidity").text("Humidity: " + firstData.attributes.humidity)
-//             $("#light").text("Light: " + firstData.attributes.light)
-//             set_data_table(data);
-//
-//         } else {
-//             console.log("Data: " + data + "\n status: " + status)
-//         }
-//
-//     });
-//
-// }
-//
+}
 
 /***/ }),
 

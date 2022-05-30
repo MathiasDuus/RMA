@@ -8,13 +8,17 @@
     </div>
     <div class="row">
         <div class="col">
-            <p id="temperature"></p>
+            <h2 id="temperature"></h2>
         </div>
+    </div>
+    <div class="row">
         <div class="col">
-            <p id="humidity"></p>
+            <h2 id="humidity"></h2>
         </div>
+    </div>
+    <div class="row">
         <div class="col">
-            <p id="light"></p>
+            <h2 id="light"></h2>
         </div>
     </div>
 
